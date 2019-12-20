@@ -37,7 +37,7 @@ public class MainActivity extends PermissionActivity {
                                 .append(Environment.getExternalStorageDirectory() +"/FFmpegDemo/video.mp4")
                                 .append("-i")
                                 .append(Environment.getExternalStorageDirectory() +"/FFmpegDemo/logo.png")
-//                                .append("-filter_complex")
+                                .append("-filter_complex")
                                 .append("[1:v]scale=300:300[logo];[0:v][logo]overlay=x=0:y=0")
                                 .append(Environment.getExternalStorageDirectory() + "/FFmpegDemo/video_filtered.mp4").build());
 
