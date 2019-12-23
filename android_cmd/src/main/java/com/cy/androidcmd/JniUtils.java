@@ -25,8 +25,9 @@ public class JniUtils {
 //        }
     }
 
-    private void onProgress(float progress) {
-        LogUtils.log("porgress", progress);
+    private void onProgress(int hour,int min,int secs,int totalSecs) {
+
+        LogUtils.log("onProgress", hour+":"+min+":"+secs+"__________"+totalSecs);
 //        if (sOnCmdExecListener != null)
 //        {
 //            if (sDuration != 0)
@@ -34,5 +35,8 @@ public class JniUtils {
 //                sOnCmdExecListener.onProgress(progress / (sDuration / 1000) * 0.95f);
 //            }
 //        }
+    }
+    private void onFailed(String msg){
+        LogUtils.log("onFailed", msg);
     }
 }
