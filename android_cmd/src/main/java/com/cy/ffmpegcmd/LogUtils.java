@@ -1,4 +1,4 @@
-package com.cy.androidcmd;
+package com.cy.ffmpegcmd;
 
 import android.util.Log;
 
