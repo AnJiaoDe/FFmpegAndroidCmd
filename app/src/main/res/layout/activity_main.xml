@@ -11,5 +11,20 @@
         android:text="run_cmd"
         android:layout_height="wrap_content"
         android:id="@+id/btn_run_cmd"/>
+    <Button
+        android:layout_width="match_parent"
+        android:text="run_cmd2"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_run_cmd2"/>
+    <Button
+        android:layout_width="match_parent"
+        android:text="cancel1"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_cancel_1"/>
+    <Button
+        android:layout_width="match_parent"
+        android:text="cancel2"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_cancle_2"/>
 
 </LinearLayout>
