@@ -1,5 +1,7 @@
 package com.cy.android_cmd;
 
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Environment;
 import android.os.Bundle;
 import android.os.Looper;
@@ -13,6 +15,7 @@ import com.cy.ffmpegandroidcmd.R;
 import com.cy.permission.PermissionActivity;
 
 public class MainActivity extends PermissionActivity {
+    private int index_1 = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +26,7 @@ public class MainActivity extends PermissionActivity {
         findViewById(R.id.btn_cancel_1).setOnClickListener(this);
         findViewById(R.id.btn_cancle_2).setOnClickListener(this);
 
-
+        String
     }
 
     @Override
@@ -42,30 +45,46 @@ public class MainActivity extends PermissionActivity {
 //                                -i F:\表情包\JB`~O0J_SH{U{VA0U{3%X~I.gif
 //-filter_complex "[1:v]scale=300:300[logo];[0:v][logo]overlay=x=0:y=0"
 //C:\Users\Administrator\Desktop\filtered_video.mp4
-                        JniUtils.getInstance().cmdAsync(new CmdCommandList().append("ffmpeg")
-                                .append("-y")
-                                .append("-i")
-                                .append(Environment.getExternalStorageDirectory() + "/FFmpegDemo/video.mp4")
-                                .append("-i")
-                                .append(Environment.getExternalStorageDirectory() + "/FFmpegDemo/logo.png")
-                                .append("-filter_complex")
-                                .append("[1:v]scale=300:300[logo];[0:v][logo]overlay=x=0:y=0")
-                                .append(Environment.getExternalStorageDirectory() + "/FFmpegDemo/video_filtered.mp4").build(), new CmdCallback() {
-                            @Override
-                            public void onProgress(int hour, int min, int secs, int totalSecs) {
+//
+//                        new Thread(new Runnable() {
+//                            @Override
+//                            public void run() {
 
-                            }
 
-                            @Override
-                            public void onFail() {
+                                index_1 = JniUtils.getInstance().cmdAsync(new CmdCommandList().append("ffmpeg")
+                                                .append("-y")
+                                                .append("-i")
+                                                .append(Environment.getExternalStorageDirectory() + "/FFmpegDemo/video.mp4")
+                                                .append("-i")
+                                                .append(Environment.getExternalStorageDirectory() + "/FFmpegDemo/logo.png")
+                                                .append("-filter_complex")
+                                                .append("[1:v]scale=300:300[logo];[0:v][logo]overlay=x=0:y=0")
+                                                .append(Environment.getExternalStorageDirectory() + "/FFmpegDemo/video_filtered.mp4").build(),
+                                        new CmdCallback() {
+                                            @Override
+                                            public void onProgress(int hour, int min, int secs, int totalSecs) {
+                                                LogUtils.log("onProgress");
+                                            }
 
-                            }
+                                            @Override
+                                            public void onSuccess() {
+                                                LogUtils.log("onSuccess");
 
-                            @Override
-                            public void onSuccess() {
+                                            }
 
-                            }
-                        });
+                                            @Override
+                                            public void onCancel() {
+
+                                            }
+
+                                            @Override
+                                            public void onFail() {
+                                                LogUtils.log("onFail");
+
+                                            }
+                                        });
+//                            }
+//                        }).start();
 
                     }
 
@@ -83,7 +102,7 @@ public class MainActivity extends PermissionActivity {
                 break;
             case R.id.btn_cancel_1:
                 LogUtils.log("cancle-1");
-                JniUtils.getInstance().getThread().interrupt();
+                JniUtils.getInstance().cancel(index_1);
                 break;
             case R.id.btn_cancle_2:
                 break;
