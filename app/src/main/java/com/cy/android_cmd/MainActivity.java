@@ -26,7 +26,6 @@ public class MainActivity extends PermissionActivity {
         findViewById(R.id.btn_cancel_1).setOnClickListener(this);
         findViewById(R.id.btn_cancle_2).setOnClickListener(this);
 
-        String
     }
 
     @Override
