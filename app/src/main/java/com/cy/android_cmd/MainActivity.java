@@ -60,9 +60,11 @@ public class MainActivity extends PermissionActivity {
                                                 .append("[1:v]scale=300:300[logo];[0:v][logo]overlay=x=0:y=0")
                                                 .append(Environment.getExternalStorageDirectory() + "/FFmpegDemo/video_filtered.mp4").build(),
                                         new CmdCallback() {
+
                                             @Override
-                                            public void onProgress(int hour, int min, int secs, int totalSecs) {
+                                            public void onProgress(int hour, int min, int secs, long totalSecs) {
                                                 LogUtils.log("onProgress");
+
                                             }
 
                                             @Override
