@@ -35,8 +35,9 @@ public class JniUtils {
             map_cmdCallback.remove(index);
         }
     }
+
     public void cancelAll() {
-        for(Integer index:map_cmdCallback.keySet()){
+        for (Integer index : map_cmdCallback.keySet()) {
             CmdCallback cmdCallback = map_cmdCallback.get(index);
             if (cmdCallback != null) {
                 cancelCmd(cmdCallback.getId_thread());
@@ -50,7 +51,11 @@ public class JniUtils {
 
     private static native void cancelCmd(long id_thread);
 
-    private static void onProgress(int index, int hour, int min, int secs, long totalSecs) {
+    public static void onProgress() {
+        LogUtils.log("onProgress___");
+    }
+
+    public static void onProgress(int index, int hour, int min, int secs, long totalSecs) {
         CmdCallback cmdCallback = map_cmdCallback.get(index);
         if (cmdCallback != null) cmdCallback.onProgress(hour, min, secs, totalSecs);
         LogUtils.log("onProgress", hour + ":" + min + ":" + secs + "__________" + totalSecs);
